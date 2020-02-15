@@ -3,28 +3,56 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="store.css" />
+    <link rel="stylesheet" type="text/css" href="app.css" />
     <title>Rock Paper Scissors</title>
-    <script type="module" src="app.js"></script>
+    <script>
+      let ans = "";
+      const answerGenerator = () => {
+        let randNum = Math.floor(Math.random() * 3);
+        console.log(randNum);
+        document.getElementById(`button-holder`).style.display = "block";
+        switch (randNum) {
+          case 0:
+            ans = "rock";
+            break;
+          case 1:
+            ans = "paper";
+            break;
+          case 2:
+            ans = "scissors";
+            break;
+        }
+        document.getElementById(`ready`).style.display = "none";
+        return ans;
+      };
+      const answerCheck = (ans, type) => {
+        document.getElementById(`button-holder`).style.display = "none";
+        if (ans == type) {
+          document.getElementById(`win`).style.display = "block";
+        } else {
+          document.getElementById(`loss`).style.display = "block";
+        }
+      };
+    </script>
   </head>
 
   <body>
     <!-- the enemy -->
-    <img src="./assets"/>
+    <img src="./assets" />
     <p>You've been accosted by a wizard, choose wisely!</p>
-    <button onclick="answerGenerator()">I'm ready!</button>
+    <button id="ready" onclick="answerGenerator()">I'm ready!</button>
 
     <!-- buttons to select your option -->
 
     <div id="button-holder">
-      <button class=button onclick="answerCheck(ans, 'rock')">🤘</button>
-      <button class=button onclick="answerCheck(ans, 'paper')">✋</button>
-      <button class=button onclick="answerCheck(ans, 'scissors')">✌</button>
+      <button class="button" onclick="answerCheck(ans, 'rock')">🤘</button>
+      <button class="button" onclick="answerCheck(ans, 'paper')">✋</button>
+      <button class="button" onclick="answerCheck(ans, 'scissors')">✌</button>
     </div>
 
     <div id="result">
-        <p id="win">You passed the test</p>
-        <p id="loss">Better luck next time</p>
+      <p id="win">You passed the test</p>
+      <p id="loss">Better luck next time</p>
     </div>
   </body>
 </html>

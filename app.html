@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="store.css" />
+    <title>Rock Paper Scissors</title>
+    <script type="module" src="app.js"></script>
+  </head>
+
+  <body>
+    <!-- the enemy -->
+    <img src="./assets"/>
+    <p>You've been accosted by a wizard, choose wisely!</p>
+    <button onclick="answerGenerator()">I'm ready!</button>
+
+    <!-- buttons to select your option -->
+
+    <div id="button-holder">
+      <button class=button onclick="answerCheck(ans, 'rock')">🤘</button>
+      <button class=button onclick="answerCheck(ans, 'paper')">✋</button>
+      <button class=button onclick="answerCheck(ans, 'scissors')">✌</button>
+    </div>
+
+    <div id="result">
+        <p id="win">You passed the test</p>
+        <p id="loss">Better luck next time</p>
+    </div>
+  </body>
+</html>

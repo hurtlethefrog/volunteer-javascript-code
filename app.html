@@ -25,12 +25,16 @@
         document.getElementById(`ready`).style.display = "none";
         return ans;
       };
-      const answerCheck = (ans, type) => {
-        document.getElementById(`button-holder`).style.display = "none";
+      const answerChecker = (ans, type) => {
+        let buttons = document.getElementById(`button-holder`).children;
+        for (let child of buttons) {
+          child.disabled = "disabled";
+        }
         if (ans == type) {
-          document.getElementById(`win`).style.display = "block";
+          document.getElementById(`result`).innerHTML =
+            "Good job, you out wizarded the wizard";
         } else {
-          document.getElementById(`loss`).style.display = "block";
+          document.getElementById(`result`).innerHTML = "Bad job, you're dumb";
         }
       };
     </script>
@@ -45,14 +49,13 @@
     <!-- buttons to select your option -->
 
     <div id="button-holder">
-      <button class="button" onclick="answerCheck(ans, 'rock')">🤘</button>
-      <button class="button" onclick="answerCheck(ans, 'paper')">✋</button>
-      <button class="button" onclick="answerCheck(ans, 'scissors')">✌</button>
+      <button class="button" onclick="answerChecker(ans, 'rock')">🤘</button>
+      <button class="button" onclick="answerChecker(ans, 'paper')">✋</button>
+      <button class="button" onclick="answerChecker(ans, 'scissors')">
+        ✌
+      </button>
     </div>
 
-    <div id="result">
-      <p id="win">You passed the test</p>
-      <p id="loss">Better luck next time</p>
-    </div>
+    <p id="result"></p>
   </body>
 </html>

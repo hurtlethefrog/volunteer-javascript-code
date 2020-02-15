@@ -27,8 +27,8 @@
       };
       const answerChecker = (ans, type) => {
         let buttons = document.getElementById(`button-holder`).children;
-        for (let child of buttons) {
-          child.disabled = "disabled";
+        for (let button of buttons) {
+          button.disabled = "disabled";
         }
         if (ans == type) {
           document.getElementById(`result`).innerHTML =

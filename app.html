@@ -8,7 +8,7 @@
     <script>
       let ans = "";
       const answerGenerator = () => {
-        let randNum = Math.floor(Math.random() * 3);
+        const randNum = Math.floor(Math.random() * 3);
         console.log(randNum);
         document.getElementById(`button-holder`).style.display = "block";
         switch (randNum) {
@@ -26,7 +26,7 @@
         return ans;
       };
       const answerChecker = (ans, type) => {
-        let buttons = document.getElementById(`button-holder`).children;
+        const buttons = document.getElementById(`button-holder`).children;
         for (let button of buttons) {
           button.disabled = "disabled";
         }

@@ -1,3 +1,18 @@
 #button-holder {
   display: none;
+  justify-items: space-between;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  width: 40%;
+  margin: 0 auto;
+}
+
+p {
+  text-align: center;
 }

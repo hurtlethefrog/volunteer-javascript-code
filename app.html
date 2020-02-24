@@ -7,10 +7,13 @@
     <title>Rock Paper Scissors</title>
     <script>
       let ans = "";
+      let score = {
+        wizard: 0,
+        student: 0
+      };
       const answerGenerator = () => {
         let randNum = Math.floor(Math.random() * 3);
-        console.log(randNum);
-        document.getElementById(`button-holder`).style.display = "block";
+        document.getElementById(`button-answers`).style.display = "flex";
         switch (randNum) {
           case 0:
             ans = "rock";
@@ -26,16 +29,31 @@
         return ans;
       };
       const answerChecker = (ans, type) => {
-        let buttons = document.getElementById(`button-holder`).children;
+        const buttons = document.getElementById(`button-answers`).children;
         for (let button of buttons) {
-          button.disabled = "disabled";
+          button.disabled = "disbaled";
         }
         if (ans == type) {
           document.getElementById(`result`).innerHTML =
             "Good job, you out wizarded the wizard";
+          score.student += 1;
         } else {
-          document.getElementById(`result`).innerHTML = "Bad job, you're dumb";
+          document.getElementById(`result`).innerHTML = 
+            "Bad job, you're dumb";
+          score.wizard += 1;
         }
+      };
+      const scoreAlert = () => {
+        alert("Wizard: " + score.wizard + "\nStudent: " + score.student);
+      };
+      const reset = () => {
+        const buttons = document.getElementById(`button-answers`).children;
+        for (let button of buttons) {
+          button.disabled = false;
+        }
+        document.getElementById(`button-answers`).style.display = "none";
+        document.getElementById(`ready`).style.display = "block";
+        document.getElementById(`result`).innerHTML = "";
       };
     </script>
   </head>
@@ -44,11 +62,12 @@
     <!-- the enemy -->
     <img src="./assets/Slizard.png" />
     <p>You've been accosted by a wizard, choose wisely!</p>
+    <div class="button-box">
     <button id="ready" onclick="answerGenerator()">I'm ready!</button>
-
+    </div>
     <!-- buttons to select your option -->
 
-    <div id="button-holder">
+    <div class="button-box" id="button-answers">
       <button class="button" onclick="answerChecker(ans, 'rock')">🤘</button>
       <button class="button" onclick="answerChecker(ans, 'paper')">✋</button>
       <button class="button" onclick="answerChecker(ans, 'scissors')">
@@ -57,5 +76,9 @@
     </div>
 
     <p id="result"></p>
+    <div class="button-box">
+      <button class="button" onclick="scoreAlert()">What's the score?</button>
+      <button class="button" onclick="reset()">Play again?</button>
+    </div>
   </body>
 </html>

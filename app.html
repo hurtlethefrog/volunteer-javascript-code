@@ -39,7 +39,7 @@
           score.student += 1;
         } else {
           document.getElementById(`result`).innerHTML = 
-            "Bad job, you're dumb";
+            "Bad job, you're the lesser wizard";
           score.wizard += 1;
         }
       };
@@ -77,8 +77,8 @@
 
     <p id="result"></p>
     <div class="button-box">
-      <button class="button" onclick="scoreAlert()">What's the score?</button>
-      <button class="button" onclick="reset()">Play again?</button>
+      <button onclick="scoreAlert()">What's the score?</button>
+      <button onclick="reset()">Play again?</button>
     </div>
   </body>
 </html>
